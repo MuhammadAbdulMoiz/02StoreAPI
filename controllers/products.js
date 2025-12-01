@@ -2,16 +2,27 @@ const CustomError = require('../errors/customErrors');
 const ProductCollection = require('../models/Product');
 
 // Gets all products with optional filtering by 'featured' query parameter and ignores other query parameters
+// Gets all products containing the matching charatcers
 const getAllProducts = async (req, res) => {
-    const { featured, company } = req.query;
+    const { name, featured, company, sort } = req.query;
     const queryObj = {};
     if (featured) {
         queryObj.featured = featured === 'true' ? true : false;
     }
     if (company) {
-        queryObj.company = company;
+        queryObj.company = { $regex: company, $options: 'i' };
     }
-    const products = await ProductCollection.find(queryObj);
+    if (name) {
+        queryObj.name = { $regex: name, $options: 'i' };
+    }
+    let results = ProductCollection.find(queryObj);
+    if (sort){
+        const sortList = sort.split(',').join(' ');
+        results = results.sort(sortList);
+    }else {
+        results = results.sort('createdAt');
+    }
+    const products = await results;
     if (!products) {
         throw new CustomError('No products found for the given query', 404);
     }
