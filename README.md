@@ -1,9 +1,7 @@
 # Store API
-
-## 📋 Heading
 A Node.js Express-based REST API for managing and retrieving product data with advanced filtering, sorting, and pagination capabilities.
 
-## 📝 Description
+## Description
 Store API is a comprehensive backend service that provides endpoints for managing products in an e-commerce store. It supports filtering by multiple criteria (name, company, featured status), numeric comparisons (price, rating), sorting, field selection, and pagination. The API is built with Express.js, MongoDB, and includes error handling middleware for robust error management.
 
 ## 🏗️ Project Structure
@@ -69,12 +67,7 @@ All routes are prefixed with `/api/v1/products`
 - **Endpoint**: `GET /featured`
 - **Description**: Get all products marked as featured
 
-#### 4. Query Products
-- **Endpoint**: `GET /query`
-- **Query Parameters**: Any product field
-- **Description**: Custom query endpoint for flexible product searching
-
-#### 5. Get Single Product
+#### 4. Get Single Product
 - **Endpoint**: `GET /:id`
 - **Parameters**: MongoDB product ID
 - **Description**: Get a specific product by ID
@@ -146,5 +139,3 @@ Content-Type: application/json
 - Provides descriptive error messages
 - Logs errors for debugging
 
-## 📝 License
-MIT
