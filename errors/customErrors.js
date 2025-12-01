@@ -5,8 +5,5 @@ class CustomError extends Error {
     }
 }
 
-const createCustomError = (msg, status) => {
-    return new CustomError(msg, status);
-}
 
-module.exports = { CustomError, createCustomError };
+module.exports = CustomError;
